@@ -1,16 +1,51 @@
-# React + Vite
+# 🚀 Vilin Koulgekar Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website.
 
-Currently, two official plugins are available:
+A modern interactive portfolio built with React, Three.js, and modern frontend technologies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌟 Features
 
-## React Compiler
+- Interactive 3D universe experience
+- Animated galaxy and space environment
+- Responsive design
+- Modern UI/UX
+- Project showcase
+- Contact section
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+### Frontend
+- React.js
+- JavaScript
+- Three.js
+- React Three Fiber
+- Vite
+- CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Tools
+- Git
+- GitHub
+- Vercel
+
+## 📂 Projects
+
+### AI-Powered Predictive Hospital Management System
+
+AI-based healthcare monitoring platform designed to predict patient distress using AI technologies.
+
+### Sakhi - Rural Girls Empowerment Platform
+
+A platform focused on empowering rural girls through education, healthcare awareness, and digital skills.
+
+## 📸 Preview
+
+(Add screenshots here)
+
+## 🔗 Connect With Me
+
+GitHub:
+https://github.com/Vilin07
+
+LinkedIn:
+(Add your LinkedIn link)
