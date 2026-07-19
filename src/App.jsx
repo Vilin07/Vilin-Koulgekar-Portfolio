@@ -1,18 +1,17 @@
 import Background from "./components/ui/Background";
-import Navbar from "./components/layout/Navbar";
-import Welcome from "./components/sections/Welcome";
-import Hero from "./components/sections/Hero";
+import IntroScene from "./experience/scenes/IntroScene";
+import useUniversePhase from "./hooks/useUniversePhase";
+import useScrollProgress from "./hooks/useScrollProgress";
 
 function App() {
+  const phase = useUniversePhase();
+  const scrollProgress = useScrollProgress();
+
   return (
     <>
-      <Background />
-      <Navbar />
-
-      <main className="relative z-10">
-        <Welcome />
-        <Hero />
-      </main>
+      <Background phase={phase} scrollProgress={scrollProgress} />
+      <IntroScene phase={phase} scrollProgress={scrollProgress} />
+      <div aria-hidden="true" className="relative h-[500vh]" />
     </>
   );
 }

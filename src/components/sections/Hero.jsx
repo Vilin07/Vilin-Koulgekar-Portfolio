@@ -4,27 +4,32 @@ function Hero() {
 
     return (
 
-        <section className="flex min-h-screen items-center justify-center">
+        <section className="min-h-[200vh] relative">
 
-            <div className="text-center">
+         <div className="sticky top-0 h-screen flex items-center justify-center">
 
-                <h1 className="text-7xl md:text-9xl font-bold">
+  <div className="text-center max-w-4xl">
 
-                    {SITE.name}
+    <p className="uppercase tracking-[0.8em] text-blue-300 mb-6">
+      Developer • Designer • Problem Solver
+    </p>
 
-                </h1>
+    <h1
+      className="text-7xl md:text-9xl text-white"
+      style={{ fontFamily: "Cormorant Garamond" }}
+    >
+      {SITE.name}
+    </h1>
 
-                <p className="mt-10 text-xl text-gray-400">
+    <p className="mt-8 text-xl text-blue-100 leading-9">
+      {SITE.tagline}
+      <br />
+      {SITE.subtitle}
+    </p>
 
-                    {SITE.tagline}
+  </div>
 
-                    <br />
-
-                    {SITE.subtitle}
-
-                </p>
-
-            </div>
+</div>
 
         </section>
 

@@ -8,12 +8,11 @@ import {
 export default function Effects() {
   return (
     <EffectComposer>
-      <Bloom
-        intensity={1.5}
-        luminanceThreshold={0.05}
-        luminanceSmoothing={0.8}
-        mipmapBlur
-      />
+     <Bloom
+  intensity={0.72}
+  luminanceThreshold={0.3}
+  luminanceSmoothing={0.82}
+/>
 
       <Noise opacity={0.01} />
 

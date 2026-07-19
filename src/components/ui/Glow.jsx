@@ -1,3 +1,4 @@
+// Legacy/inactive CSS glow retained from the pre-UniverseCanvas visual layer.
 function Glow() {
   return (
     <div className="absolute inset-0">
