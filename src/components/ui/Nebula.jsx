@@ -1,3 +1,4 @@
+// Legacy/inactive CSS nebula retained from the pre-UniverseCanvas visual layer.
 function Nebula() {
   return (
     <>

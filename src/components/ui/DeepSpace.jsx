@@ -1,3 +1,4 @@
+// Legacy/inactive CSS background retained from the pre-UniverseCanvas visual layer.
 function DeepSpace() {
   return (
     <div

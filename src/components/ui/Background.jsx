@@ -1,9 +1,9 @@
-import Experience from "../../scene/Experience";
+import UniverseCanvas from "../universe/UniverseCanvas";
 
 function Background() {
   return (
     <div className="fixed inset-0 -z-10">
-      <Experience />
+      <UniverseCanvas />
     </div>
   );
 }
