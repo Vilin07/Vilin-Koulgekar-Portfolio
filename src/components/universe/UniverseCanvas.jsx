@@ -1,13 +1,11 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { UNIVERSE_COLORS } from "../../experience/config/universe";
-import useScrollProgress from "../../hooks/useScrollProgress";
 import useUniverseQuality from "../../hooks/useUniverseQuality";
 import Universe from "./Universe";
 
-export default function UniverseCanvas() {
+export default function UniverseCanvas({ phase, scrollProgress }) {
   const quality = useUniverseQuality();
-  const scrollProgress = useScrollProgress();
 
   return (
     <Canvas
@@ -18,7 +16,7 @@ export default function UniverseCanvas() {
       <color attach="background" args={[UNIVERSE_COLORS.background]} />
       <fog attach="fog" args={[UNIVERSE_COLORS.background, 12, 70]} />
       <Suspense fallback={null}>
-        <Universe quality={quality} scrollProgress={scrollProgress} />
+        <Universe quality={quality} scrollProgress={scrollProgress} phase={phase} />
       </Suspense>
     </Canvas>
   );

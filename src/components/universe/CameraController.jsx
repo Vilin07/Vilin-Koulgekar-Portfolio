@@ -2,6 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 import { JOURNEY_WAYPOINTS } from "../../experience/config/journey";
+import { getActiveJourneyProgress } from "../../utils/journeyProgress";
 
 function getJourneyState(progress) {
   const nextIndex = JOURNEY_WAYPOINTS.findIndex((point) => point.progress >= progress);
@@ -13,7 +14,7 @@ function getJourneyState(progress) {
   return { start, end, alpha };
 }
 
-export default function CameraController({ progress, motionScale }) {
+export default function CameraController({ progress, motionScale, phase }) {
   const targetPosition = useRef(new THREE.Vector3());
   const targetLookAt = useRef(new THREE.Vector3());
   const startPosition = useRef(new THREE.Vector3());
@@ -23,7 +24,8 @@ export default function CameraController({ progress, motionScale }) {
   const currentLookAt = useRef(new THREE.Vector3(0, 0, -8));
 
   useFrame(({ camera, pointer, clock }, delta) => {
-    const journey = getJourneyState(progress);
+    const activeProgress = getActiveJourneyProgress(clock.elapsedTime, phase, progress);
+    const journey = getJourneyState(activeProgress);
     targetPosition.current
       .copy(startPosition.current.fromArray(journey.start.position))
       .lerp(endPosition.current.fromArray(journey.end.position), journey.alpha);
@@ -31,7 +33,7 @@ export default function CameraController({ progress, motionScale }) {
       .copy(startTarget.current.fromArray(journey.start.target))
       .lerp(endTarget.current.fromArray(journey.end.target), journey.alpha);
 
-    if (motionScale > 0) {
+    if (phase === "journey" && motionScale > 0) {
       const drift = Math.sin(clock.elapsedTime * 0.15) * 0.08 * motionScale;
       targetPosition.current.x += pointer.x * 0.28 * motionScale;
       targetPosition.current.y += (pointer.y * 0.16 + drift) * motionScale;

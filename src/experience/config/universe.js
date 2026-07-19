@@ -6,6 +6,17 @@ export const UNIVERSE_COLORS = {
   dust: "#cbd5ff",
 };
 
+export const OPENING_TIMELINE = {
+  spaceRevealStart: 1,
+  welcomeStart: 2,
+  welcomeEnd: 4,
+  journeyStart: 5,
+  identityRevealStart: 10,
+  identityExitAt: 13,
+  identityArrivalAt: 11,
+  chapterOneArrivalAt: 18,
+};
+
 export const UNIVERSE_QUALITY = {
   desktop: {
     dpr: [1, 1.75],
