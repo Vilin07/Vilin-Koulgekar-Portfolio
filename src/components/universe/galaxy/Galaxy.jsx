@@ -3,14 +3,14 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { createSeededRandom } from "../../../utils/seededRandom";
 
-export default function Galaxy({ count = 32000, motionScale = 1 }) {
+export default function Galaxy({ count = 22000, motionScale = 1 }) {
   const points = useRef();
 
 const galaxy = useMemo(() => {
   const radius = 36;
-  const branches = 6;
-  const spin = 5;
- const randomness = 0.12;
+  const branches = 4;
+  const spin = 8;
+const randomness = 0.07;
   const randomnessPower = 5;
 
   const positions = new Float32Array(count * 3);
@@ -18,34 +18,39 @@ const galaxy = useMemo(() => {
   const random = createSeededRandom(20260719);
 
  const insideColor = new THREE.Color("#ffffff");
-const midColor = new THREE.Color("#b8d8ff");
-const outsideColor = new THREE.Color("#2d6dff");
+const midColor = new THREE.Color("#d9ebff");
+const outsideColor = new THREE.Color("#4b7cff");
 
   for (let i = 0; i < count; i++) {
     const i3 = i * 3;
 
-    const r = random() * radius;
+   const r = Math.pow(random(), 1.8) * radius;
 
     const spinAngle = r * spin;
 
     const branchAngle =
       ((i % branches) / branches) * Math.PI * 2;
 
-    const randomX =
-      Math.pow(random(), randomnessPower) *
-      (random() < 0.5 ? -1 : 1) *
-      randomness *
-      r;
+    const spread = 0.05 + r * 0.004;
+
+const randomX =
+    Math.pow(random(), randomnessPower) *
+    (random() < 0.5 ? -1 : 1) *
+    spread *
+    r;
+
+    const thickness =
+    Math.exp(-r * 0.08);
 
     const randomY =
-    (Math.random() - 0.5) *
-    (0.06 + r * 0.012);
+    (random() - 0.5) *
+    (0.25 + thickness * 3.2);
 
     const randomZ =
-      Math.pow(random(), randomnessPower) *
-      (random() < 0.5 ? -1 : 1) *
-      randomness *
-      r;
+    Math.pow(random(), randomnessPower) *
+    (random() < 0.5 ? -1 : 1) *
+    spread *
+    r;
 
     positions[i3] =
       Math.cos(branchAngle + spinAngle) * r + randomX;
@@ -68,9 +73,15 @@ const outsideColor = new THREE.Color("#2d6dff");
         );
     }
 
-    colors[i3] = mixed.r;
-    colors[i3 + 1] = mixed.g;
-    colors[i3 + 2] = mixed.b;
+    
+ if (r < radius * 0.18) {
+  const boost = 1.8 - (r / (radius * 0.18)) * 0.6;
+  mixed.multiplyScalar(boost);
+}
+
+   colors[i3] = mixed.r;
+   colors[i3 + 1] = mixed.g;
+   colors[i3 + 2] = mixed.b;
   }
 
   return {
@@ -84,7 +95,7 @@ useFrame((state, delta) => {
 
   const t = state.clock.elapsedTime;
 
-points.current.rotation.y += delta * 0.0035;
+points.current.rotation.y += delta * 0.0018;
 
  points.current.rotation.z =
   Math.sin(t * 0.02) * 0.01 * motionScale;
@@ -101,9 +112,9 @@ points.current.scale.setScalar(scale);
   return (
  <points
     ref={points}
-    scale={3.4}
+    scale={5.2}
     rotation={[0.55, 0.15, -0.4]}
-    position={[0, -5, -10]}
+   position={[0, -2, -18]}
 >
       <bufferGeometry>
         <bufferAttribute
@@ -121,11 +132,11 @@ points.current.scale.setScalar(scale);
       </bufferGeometry>
 
      <pointsMaterial
- size={0.018}
+size={0.022}
   sizeAttenuation
   vertexColors
   transparent
-  opacity={0.76}
+  opacity={0.96}
   depthWrite={false}
   blending={THREE.AdditiveBlending}
 />

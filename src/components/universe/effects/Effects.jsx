@@ -9,10 +9,10 @@ import {
 export default function Effects() {
   return (
     <EffectComposer>
-    <Bloom
-  intensity={1.35}
-  luminanceThreshold={0.18}
-  luminanceSmoothing={0.9}
+   <Bloom
+    intensity={1.35}
+    luminanceThreshold={0.06}
+    luminanceSmoothing={0.96}
 />
 
 <ChromaticAberration

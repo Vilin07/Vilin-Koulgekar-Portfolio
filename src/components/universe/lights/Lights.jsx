@@ -1,25 +1,25 @@
+import * as THREE from "three";
+
 export default function Lights() {
   return (
     <>
-     <ambientLight intensity={0.03} />
+      <ambientLight
+        intensity={0.22}
+        color="#b8d8ff"
+      />
 
-<pointLight
-    position={[0,0,0]}
-    color="#8fb8ff"
-    intensity={2.2}
-/>
+      <directionalLight
+        position={[10, 12, 8]}
+        intensity={0.35}
+        color="#9fc5ff"
+      />
 
-<pointLight
-    position={[8,4,5]}
-    color="#4f7cff"
-    intensity={0.5}
-/>
-
-<pointLight
-    position={[-8,-3,-5]}
-    color="#1e3a8a"
-    intensity={0.3}
-/>
+      <pointLight
+        position={[0, 0, 0]}
+        intensity={2}
+        distance={40}
+        color="#7ea6ff"
+      />
     </>
   );
 }
