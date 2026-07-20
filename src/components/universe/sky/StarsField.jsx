@@ -1,7 +1,7 @@
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { createSeededRandom } from "../../utils/seededRandom";
+import { createSeededRandom } from "../../../utils/seededRandom";
 
 export default function StarsField({ count = 9000, motionScale = 1 }) {
   const stars = useRef();

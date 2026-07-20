@@ -1,5 +1,6 @@
 import {
   Bloom,
+  ChromaticAberration,
   EffectComposer,
   Noise,
   Vignette,
@@ -8,10 +9,14 @@ import {
 export default function Effects() {
   return (
     <EffectComposer>
-     <Bloom
-  intensity={0.72}
-  luminanceThreshold={0.3}
-  luminanceSmoothing={0.82}
+    <Bloom
+  intensity={1.35}
+  luminanceThreshold={0.18}
+  luminanceSmoothing={0.9}
+/>
+
+<ChromaticAberration
+  offset={[0.0008, 0.0008]}
 />
 
       <Noise opacity={0.01} />

@@ -1,7 +1,7 @@
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { createSeededRandom } from "../../utils/seededRandom";
+import { createSeededRandom } from "../../../utils/seededRandom";
 
 export default function Galaxy({ count = 32000, motionScale = 1 }) {
   const points = useRef();
@@ -10,16 +10,16 @@ const galaxy = useMemo(() => {
   const radius = 36;
   const branches = 6;
   const spin = 5;
-  const randomness = 0.08;
+ const randomness = 0.12;
   const randomnessPower = 5;
 
   const positions = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);
   const random = createSeededRandom(20260719);
 
-  const insideColor = new THREE.Color("#ffffff");
-  const midColor = new THREE.Color("#7ea6ff");
-  const outsideColor = new THREE.Color("#1d4ed8");
+ const insideColor = new THREE.Color("#ffffff");
+const midColor = new THREE.Color("#b8d8ff");
+const outsideColor = new THREE.Color("#2d6dff");
 
   for (let i = 0; i < count; i++) {
     const i3 = i * 3;
@@ -38,8 +38,8 @@ const galaxy = useMemo(() => {
       r;
 
     const randomY =
-      (random() - 0.5) *
-      0.12;
+    (Math.random() - 0.5) *
+    (0.06 + r * 0.012);
 
     const randomZ =
       Math.pow(random(), randomnessPower) *
@@ -84,13 +84,18 @@ useFrame((state, delta) => {
 
   const t = state.clock.elapsedTime;
 
-  points.current.rotation.y += delta * 0.0015 * motionScale;
+points.current.rotation.y += delta * 0.0035;
 
  points.current.rotation.z =
   Math.sin(t * 0.02) * 0.01 * motionScale;
 
  points.current.position.y =
   Math.sin(t * 0.04) * 0.04 * motionScale;
+
+  const scale =
+  2.6 + Math.sin(t * 0.18) * 0.03;
+
+points.current.scale.setScalar(scale);
 });
 
   return (
