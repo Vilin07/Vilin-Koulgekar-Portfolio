@@ -1,6 +1,6 @@
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { createSeededRandom } from "../../utils/seededRandom";
+import { createSeededRandom } from "../../../utils/seededRandom";
 
 export default function FarStars({ count = 7000, motionScale = 1 }) {
   const ref = useRef();

@@ -8,13 +8,20 @@ export default function UniverseCanvas({ phase, scrollProgress }) {
   const quality = useUniverseQuality();
 
   return (
-    <Canvas
-      dpr={quality.dpr}
-      camera={{ position: [0, 3, 14], fov: 38 }}
-      gl={{ antialias: quality.level === "desktop", alpha: false, powerPreference: "high-performance" }}
-    >
-      <color attach="background" args={[UNIVERSE_COLORS.background]} />
-      <fog attach="fog" args={[UNIVERSE_COLORS.background, 12, 70]} />
+  <Canvas
+  dpr={quality.dpr}
+  camera={{ position: [0, 3, 14], fov: 38 }}
+  gl={{
+    antialias: quality.level === "desktop",
+    alpha: false,
+    powerPreference: "high-performance",
+  }}
+>
+      
+      <fog
+  attach="fog"
+  args={["#04111f", 35, 120]}
+/>
       <Suspense fallback={null}>
         <Universe quality={quality} scrollProgress={scrollProgress} phase={phase} />
       </Suspense>

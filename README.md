@@ -1,11 +1,11 @@
 
-# 🚀 Vilin Koulgekar Portfolio
+# Vilin Koulgekar Portfolio
 
 Welcome to my personal portfolio website.
 
 A modern interactive portfolio built with React, Three.js, and modern frontend technologies.
 
-## 🌟 Features
+##  Features
 
 - Interactive 3D universe experience
 - Animated galaxy and space environment
@@ -14,7 +14,7 @@ A modern interactive portfolio built with React, Three.js, and modern frontend t
 - Project showcase
 - Contact section
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 - React.js
@@ -29,7 +29,7 @@ A modern interactive portfolio built with React, Three.js, and modern frontend t
 - GitHub
 - Vercel
 
-## 📂 Projects
+##  Projects
 
 ### AI-Powered Predictive Hospital Management System
 
@@ -39,11 +39,11 @@ AI-based healthcare monitoring platform designed to predict patient distress usi
 
 A platform focused on empowering rural girls through education, healthcare awareness, and digital skills.
 
-## 📸 Preview
+## Preview
 
 (Add screenshots here)
 
-## 🔗 Connect With Me
+##  Connect With Me
 
 GitHub:
 https://github.com/Vilin07
@@ -51,7 +51,7 @@ https://github.com/Vilin07
 LinkedIn:
 (Add your LinkedIn link)
 =======
-# 🚀 Vilin Koulgekar - Portfolio
+#  Vilin Koulgekar - Portfolio
 
 ## About Me
 Computer Science Engineering graduate passionate about Full Stack Development,
@@ -74,11 +74,11 @@ Tools:
 
 ## Features
 
-✨ Interactive 3D Universe Experience
-✨ Responsive Design
-✨ Modern UI Animations
-✨ Project Showcase
-✨ Contact Section
+ Interactive 3D Universe Experience
+ Responsive Design
+ Modern UI Animations
+ Project Showcase
+ Contact Section
 
 ## Projects
 

@@ -1,21 +1,25 @@
-import Lights from "../../scene/universe/Lights";
-import FarStars from "../../scene/sky/FarStars";
-import StarsField from "../../scene/sky/StarsField";
-import CosmicDust from "../../scene/atmosphere/CosmicDust";
-import Galaxy from "../../scene/galaxy/Galaxy";
-import GalaxyCore from "../../scene/galaxy/GalaxyCore";
-import Effects from "../../scene/effects/Effects";
-import UniverseGlow from "../../scene/atmosphere/UniverseGlow";
+import Lights from "./lights/Lights";
+import FarStars from "./sky/FarStars";
+import StarsField from "./sky/StarsField";
+import CosmicDust from "./atmosphere/CosmicDust";
+import Galaxy from "./galaxy/Galaxy";
+import GalaxyCore from "./galaxy/GalaxyCore";
+import Effects from "./effects/Effects";
+import UniverseGlow from "./atmosphere/UniverseGlow";
 import { UniverseQuality } from "./UniverseQuality";
 import CameraController from "./CameraController";
 import OriginStar from "./OriginStar";
 import ChapterOne from "../../experience/chapters/ChapterOne";
 import KnowledgeChapter from "../../experience/chapters/KnowledgeChapter";
+import CosmicBackground from "./atmosphere/CosmicBackground";
+import Nebula from "./atmosphere/Nebula";
 
 export default function Universe({ quality, scrollProgress, phase }) {
   return (
     <UniverseQuality quality={quality}>
+      <CosmicBackground />
       <CameraController progress={scrollProgress} motionScale={quality.motionScale} phase={phase} />
+      <Nebula />
       <Lights />
       <FarStars count={quality.farStars} motionScale={quality.motionScale} />
       <GalaxyCore motionScale={quality.motionScale} />

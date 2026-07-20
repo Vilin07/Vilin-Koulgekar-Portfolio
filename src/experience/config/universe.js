@@ -1,5 +1,5 @@
 export const UNIVERSE_COLORS = {
-  background: "#020617",
+  background: "#04111f",
   star: "#dbeafe",
   starBlue: "#7ea6ff",
   deepBlue: "#1d4ed8",

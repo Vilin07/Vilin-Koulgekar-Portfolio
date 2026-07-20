@@ -1,7 +1,7 @@
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { createSeededRandom } from "../../utils/seededRandom";
+import { createSeededRandom } from "../../../utils/seededRandom";
 
 export default function CosmicDust({ count = 1600, motionScale = 1 }) {
   const ref = useRef();
@@ -25,10 +25,10 @@ export default function CosmicDust({ count = 1600, motionScale = 1 }) {
     if (!ref.current) return;
 
     ref.current.rotation.y =
-      state.clock.elapsedTime * 0.002 * motionScale;
+  state.clock.elapsedTime * 0.0012 * motionScale;
 
-    ref.current.rotation.x =
-      Math.sin(state.clock.elapsedTime * 0.02) * 0.02 * motionScale;
+   ref.current.rotation.x =
+  Math.sin(state.clock.elapsedTime * 0.015) * 0.012 * motionScale;
   });
 
   return (
@@ -42,14 +42,14 @@ export default function CosmicDust({ count = 1600, motionScale = 1 }) {
         />
       </bufferGeometry>
 
-      <pointsMaterial
-        color="#cbd5ff"
-        size={0.025}
-        transparent
-        opacity={0.12}
-        depthWrite={false}
-        blending={THREE.AdditiveBlending}
-      />
+     <pointsMaterial
+  color="#dbeafe"
+  size={0.018}
+  transparent
+  opacity={0.08}
+  depthWrite={false}
+  blending={THREE.AdditiveBlending}
+/>
     </points>
   );
 }
