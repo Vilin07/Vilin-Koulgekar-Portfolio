@@ -15,7 +15,9 @@ import CosmicBackground from "./atmosphere/CosmicBackground";
 import Nebula from "./atmosphere/Nebula";
 import HeroStars from "./sky/HeroStars";
 import GalaxyHaze from "./galaxy/GalaxyHaze";
-
+import GalaxyNucleus from "./galaxy/GalaxyNucleus";
+import GalaxyArmsGlow from "./galaxy/GalaxyArmsGlow";
+import DustLanes from "./galaxy/DustLanes";
 
 export default function Universe({ quality, scrollProgress, phase }) {
   return (
@@ -30,6 +32,9 @@ export default function Universe({ quality, scrollProgress, phase }) {
       />
       <GalaxyHaze />
       <GalaxyCore motionScale={quality.motionScale} />
+      <GalaxyNucleus motionScale={quality.motionScale} />
+      <DustLanes />
+      <GalaxyArmsGlow />
       <Galaxy count={quality.galaxy} motionScale={quality.motionScale} />
       <StarsField count={quality.stars} motionScale={quality.motionScale} />
       <CosmicDust count={quality.dust} motionScale={quality.motionScale} />

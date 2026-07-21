@@ -49,7 +49,7 @@ export default function GalaxyHaze() {
         <meshBasicMaterial
           color="#8ab8ff"
           transparent
-       opacity={0.008}
+          opacity={0.008}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
