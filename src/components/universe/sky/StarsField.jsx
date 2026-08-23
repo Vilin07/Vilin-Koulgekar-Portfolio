@@ -72,7 +72,7 @@ export default function StarsField({ count = 9000, motionScale = 1 }) {
       nearPositions[i3 + 1] = (random() - 0.5) * 250;
       nearPositions[i3 + 2] = (random() - 0.5) * 250;
 
-      color.setRGB(1, 1, 1);
+      color.setRGB(0.74, 0.79, 0.9);
 
       nearColors[i3] = color.r;
       nearColors[i3 + 1] = color.g;
@@ -104,8 +104,8 @@ stars.current.children[2].rotation.y =
   t * 0.0011 * motionScale;
 
 stars.current.children[2].material.opacity =
-  0.90 +
-  Math.sin(t * 0.35) * 0.06;
+  0.46 +
+  Math.sin(t * 0.22) * 0.025 * motionScale;
   });
 
   return (
@@ -159,7 +159,7 @@ stars.current.children[2].material.opacity =
         size={0.11}
         vertexColors
         transparent
-        opacity={0.45}
+        opacity={0.28}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
@@ -183,10 +183,10 @@ stars.current.children[2].material.opacity =
       </bufferGeometry>
 
       <pointsMaterial
-        size={0.20}
+        size={0.14}
         vertexColors
         transparent
-        opacity={0.95}
+        opacity={0.46}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />

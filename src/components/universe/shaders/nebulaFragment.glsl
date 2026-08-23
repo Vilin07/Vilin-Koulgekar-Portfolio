@@ -81,16 +81,16 @@ void main()
 
     vec3 blue =
         vec3(
+            0.08,
             0.18,
-            0.42,
-            0.95
+            0.38
         );
 
     vec3 white =
         vec3(
-            0.85,
-            0.92,
-            1.0
+            0.42,
+            0.52,
+            0.68
         );
 
     vec3 color =
@@ -104,12 +104,12 @@ void main()
         mix(
             color,
             white,
-            pow(mask,4.0)*0.25
+            pow(mask,4.0)*0.08
         );
 
     gl_FragColor =
         vec4(
             color,
-            mask*0.08
+            mask*0.035
         );
 }

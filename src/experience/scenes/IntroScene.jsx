@@ -1,6 +1,8 @@
 import IntroOverlay from "../overlays/IntroOverlay";
 import JourneyOverlay from "../overlays/JourneyOverlay";
 import PhilosophyOverlay from "../overlays/PhilosophyOverlay";
+import PortfolioOverlay from "../overlays/PortfolioOverlay";
+import JourneyIndicator from "../overlays/JourneyIndicator";
 import { useEffect, useRef, useState } from "react";
 import { PHILOSOPHY } from "../config/philosophy";
 
@@ -21,7 +23,7 @@ export default function IntroScene({ phase, scrollProgress }) {
   }, [phase]);
 
   useEffect(() => {
-    if (phase !== "journey" || scrollProgress < 0.985 || knowledgeShown.current) return undefined;
+    if (phase !== "journey" || scrollProgress < 0.5 || knowledgeShown.current) return undefined;
 
     knowledgeShown.current = true;
     const revealTimer = window.setTimeout(() => setReflection(PHILOSOPHY.knowledgeGalaxy), 0);
@@ -38,6 +40,8 @@ export default function IntroScene({ phase, scrollProgress }) {
       <IntroOverlay phase={phase} />
       <JourneyOverlay phase={phase} />
       <PhilosophyOverlay reflection={reflection} />
+      <PortfolioOverlay phase={phase} scrollProgress={scrollProgress} />
+      {phase === "journey" && <JourneyIndicator progress={scrollProgress} />}
     </>
   );
 }

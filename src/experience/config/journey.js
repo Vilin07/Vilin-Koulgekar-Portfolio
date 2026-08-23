@@ -11,8 +11,8 @@ export const JOURNEY_WAYPOINTS = [
   },
   {
     progress: 0.58,
-    position: [0.8, 0.9, 7.5],
-    target: [1.2, 0.15, -15.5],
+    position: [-0.5, 0.9, 7.5],
+    target: [-2.5, 0.2, -17],
   },
   {
     progress: 0.72,

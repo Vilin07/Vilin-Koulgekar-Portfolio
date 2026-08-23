@@ -21,9 +21,9 @@ export default function CosmicBackground() {
 
         <meshBasicMaterial
           side={THREE.BackSide}
-          color="#06162d"
+          color="#041026"
           transparent
-          opacity={0.025}
+          opacity={0.012}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -36,9 +36,9 @@ export default function CosmicBackground() {
 
         <meshBasicMaterial
           side={THREE.BackSide}
-          color="#10173e"
+          color="#0a1030"
           transparent
-          opacity={0.015}
+          opacity={0.008}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -51,9 +51,9 @@ export default function CosmicBackground() {
 
         <meshBasicMaterial
           side={THREE.BackSide}
-          color="#0b2c48"
+          color="#09233d"
           transparent
-          opacity={0.008}
+          opacity={0.004}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}

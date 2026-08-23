@@ -4,139 +4,54 @@ import * as THREE from "three";
 import { createSeededRandom } from "../../../utils/seededRandom";
 
 export default function GalaxyNucleus({ motionScale = 1 }) {
-  const group = useRef();
+  const points = useRef();
 
-  const particles = useMemo(() => {
+  const { positions, colors } = useMemo(() => {
+    const count = 480;
+    const positions = new Float32Array(count * 3);
+    const colors = new Float32Array(count * 3);
     const random = createSeededRandom(24680);
+    const color = new THREE.Color();
 
-    return Array.from({ length: 650 }, () => {
-      const r = Math.pow(random(), 2);
+    for (let index = 0; index < count; index += 1) {
+      const radius = 0.08 + Math.pow(random(), 2.2) * 1.35;
+      const angle = random() * Math.PI * 2;
+      const i3 = index * 3;
 
-      return {
-        radius: 0.08 + r * 1.4,
+      positions[i3] = Math.cos(angle) * radius;
+      positions[i3 + 1] = (random() - 0.5) * 0.48;
+      positions[i3 + 2] = Math.sin(angle) * radius;
 
-        angle: random() * Math.PI * 2,
+      color.setHSL(0.59 + random() * 0.03, 0.24, 0.58 + random() * 0.18);
+      colors[i3] = color.r;
+      colors[i3 + 1] = color.g;
+      colors[i3 + 2] = color.b;
+    }
 
-        height: (random() - 0.5) * 0.8,
-
-        size:
-          0.005 +
-          (1 - r) * 0.03 +
-          random() * 0.004,
-
-        speed:
-          (0.4 + random() * 0.8) /
-          (0.3 + r * 2),
-
-        phase: random() * Math.PI * 2,
-
-        color: new THREE.Color().setHSL(
-          0.58 + random() * 0.05,
-          0.35,
-          0.86 + random() * 0.1
-        ),
-      };
-    });
+    return { positions, colors };
   }, []);
 
   useFrame(({ clock }, delta) => {
-    if (!group.current) return;
+    if (!points.current) return;
 
-    const t = clock.elapsedTime;
-
-    group.current.children.forEach((mesh, i) => {
-      const particle = particles[i];
-
-      particle.angle +=
-        particle.speed *
-        delta *
-        0.45 *
-        motionScale;
-
-      const radius =
-        particle.radius +
-        Math.sin(
-          t * 0.8 +
-            particle.phase
-        ) *
-          0.02;
-
-      const x =
-        Math.cos(particle.angle) *
-        radius;
-
-      const y =
-        particle.height +
-        Math.sin(
-          t * 0.8 +
-            particle.phase
-        ) *
-          0.03;
-
-      const z =
-        Math.sin(particle.angle) *
-        radius;
-
-      const wobbleX =
-        Math.sin(
-          t * particle.speed +
-            particle.phase
-        ) * 0.025;
-
-      const wobbleZ =
-        Math.cos(
-          t * particle.speed * 1.3 +
-            particle.phase
-        ) * 0.025;
-
-      mesh.position.set(
-        x + wobbleX,
-        y,
-        z + wobbleZ
-      );
-
-      mesh.material.opacity =
-        0.55 +
-        Math.sin(
-          t * 2 +
-            particle.phase
-        ) *
-          0.25;
-
-      const pulse =
-        1 +
-        Math.sin(
-          t * 1.5 +
-            particle.phase
-        ) *
-          0.08;
-
-      mesh.scale.setScalar(pulse);
-    });
+    points.current.rotation.y += delta * 0.045 * motionScale;
+    points.current.rotation.x = 0.55 + Math.sin(clock.elapsedTime * 0.08) * 0.008 * motionScale;
   });
 
   return (
-    <group ref={group}>
-      {particles.map((particle, index) => (
-        <mesh key={index}>
-          <sphereGeometry
-            args={[
-              particle.size,
-              8,
-              8,
-            ]}
-          />
-
-          <meshBasicMaterial
-            color={particle.color}
-            transparent
-            opacity={0.8}
-            blending={THREE.AdditiveBlending}
-            depthWrite={false}
-            toneMapped={false}
-          />
-        </mesh>
-      ))}
-    </group>
+    <points ref={points} position={[0, -4, -60]} scale={0.7} rotation={[0.55, 0.15, -0.4]}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" array={positions} count={positions.length / 3} itemSize={3} />
+        <bufferAttribute attach="attributes-color" array={colors} count={colors.length / 3} itemSize={3} />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.018}
+        vertexColors
+        transparent
+        opacity={0.2}
+        depthWrite={false}
+        blending={THREE.AdditiveBlending}
+      />
+    </points>
   );
 }

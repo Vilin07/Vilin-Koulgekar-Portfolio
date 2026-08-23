@@ -9,6 +9,7 @@ function NebulaCloud({
   opacity,
   speed,
   rotationSpeed,
+  motionScale,
 }) {
   const group = useRef();
 
@@ -17,16 +18,16 @@ function NebulaCloud({
 
     const t = clock.elapsedTime;
 
-    group.current.rotation.z += rotationSpeed * delta * 60;
+    group.current.rotation.z += rotationSpeed * delta * 60 * motionScale;
 
     group.current.position.x =
-      position[0] + Math.sin(t * speed) * 0.35;
+      position[0] + Math.sin(t * speed) * 0.2 * motionScale;
 
     group.current.position.y =
-      position[1] + Math.cos(t * speed * 0.8) * 0.28;
+      position[1] + Math.cos(t * speed * 0.8) * 0.16 * motionScale;
 
     group.current.position.z =
-      position[2] + Math.sin(t * speed * 0.5) * 0.45;
+      position[2] + Math.sin(t * speed * 0.5) * 0.22 * motionScale;
   });
 
   return (
@@ -169,7 +170,7 @@ const CLOUDS = [
   },
 ];
 
-export default function Nebula() {
+export default function Nebula({ motionScale = 1 }) {
   return (
     <>
       {CLOUDS.map((cloud, index) => (
@@ -181,6 +182,7 @@ export default function Nebula() {
           opacity={cloud.opacity}
           speed={cloud.speed}
           rotationSpeed={cloud.rotationSpeed}
+          motionScale={motionScale}
         />
       ))}
     </>

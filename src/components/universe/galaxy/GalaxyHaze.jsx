@@ -13,13 +13,13 @@ export default function GalaxyHaze() {
     if (innerHaze.current) {
       innerHaze.current.rotation.z += delta * 0.0015;
       innerHaze.current.rotation.x =
-        Math.sin(t * 0.03) * 0.03;
+        Math.sin(t * 0.025) * 0.012;
     }
 
     if (outerHaze.current) {
       outerHaze.current.rotation.z -= delta * 0.001;
       outerHaze.current.rotation.y =
-        Math.cos(t * 0.025) * 0.02;
+        Math.cos(t * 0.02) * 0.008;
     }
   });
 
@@ -49,7 +49,7 @@ export default function GalaxyHaze() {
         <meshBasicMaterial
           color="#8ab8ff"
           transparent
-          opacity={0.008}
+          opacity={0.004}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}

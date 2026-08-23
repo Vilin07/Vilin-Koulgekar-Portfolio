@@ -1,19 +1,22 @@
+import { PORTFOLIO } from "./portfolio";
+
+const REGION_POSITIONS = [
+  [-2.8, 1.4, 0], [0, 1.7, -0.4], [2.8, 1.1, 0],
+  [-2.2, -1.5, -0.5], [0.5, -1.9, 0], [3.1, -1.4, -0.3], [4.6, 0.2, -0.8],
+];
+
+function constellation(skill, index) {
+  const stars = skill.technologies.map((name, starIndex) => {
+    const angle = (starIndex / skill.technologies.length) * Math.PI * 2 + 0.35;
+    const radius = 0.5 + (starIndex % 2) * 0.22;
+    return { id: `${skill.id}-${starIndex}`, name, position: [Math.cos(angle) * radius, Math.sin(angle) * radius, (starIndex % 3) * 0.04] };
+  });
+  return { id: skill.id, label: skill.label, position: REGION_POSITIONS[index], stars, links: stars.map((_, starIndex) => [starIndex, (starIndex + 1) % stars.length]), labelDistance: 13 };
+}
+
 export const KNOWLEDGE_GALAXY = {
-  position: [7, 0, -28],
-  revealStart: 0.94,
-  revealEnd: 1,
-  clusters: [
-    {
-      id: "frontend",
-      position: [0, 0, 0],
-      stars: [
-        { id: "javascript", name: "JavaScript", position: [-1.15, 0.3, 0] },
-        { id: "react", name: "React", position: [-0.35, 0.92, 0.06] },
-        { id: "three", name: "Three.js", position: [0.55, 0.42, -0.03] },
-        { id: "tailwind", name: "Tailwind CSS", position: [1.04, -0.36, 0.04] },
-      ],
-      links: [[0, 1], [1, 2], [2, 3], [3, 0]],
-      labelDistance: 14,
-    },
-  ],
+  position: [-2.5, 0.2, -17],
+  revealStart: 0.25,
+  revealEnd: 0.4,
+  clusters: PORTFOLIO.skills.map(constellation),
 };

@@ -13,7 +13,6 @@ export default function GalaxyArmsGlow() {
 
     const branches = 5;
     const radius = 42;
-    const spin = 12;
 
     for (let arm = 0; arm < branches; arm++) {
       for (let i = 0; i < 18; i++) {
@@ -38,7 +37,7 @@ export default function GalaxyArmsGlow() {
           size: 2.5 + random() * 2.2,
 
           opacity:
-            0.003 + random() * 0.004,
+            0.0015 + random() * 0.002,
 
           phase:
             random() *
@@ -48,7 +47,7 @@ export default function GalaxyArmsGlow() {
           color: new THREE.Color().setHSL(
             0.60 + random() * 0.04,
             0.55,
-            0.70 + random() * 0.08
+            0.55 + random() * 0.08
           ),
         });
       }
@@ -75,7 +74,7 @@ export default function GalaxyArmsGlow() {
             t * 0.25 +
               cloud.phase
           ) *
-            0.0025;
+            0.0009;
 
         mesh.rotation.z +=
           delta * 0.002;

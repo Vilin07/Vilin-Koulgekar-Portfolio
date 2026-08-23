@@ -17,9 +17,9 @@ export default function Galaxy({ count = 30000, motionScale = 1 }) {
 
     const random = createSeededRandom(20260719);
 
-    const insideColor = new THREE.Color("#ffffff");
-    const midColor = new THREE.Color("#d9ebff");
-    const outsideColor = new THREE.Color("#356bff");
+    const insideColor = new THREE.Color("#cbd5e1");
+    const midColor = new THREE.Color("#91a9cd");
+    const outsideColor = new THREE.Color("#294b88");
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
@@ -105,7 +105,7 @@ export default function Galaxy({ count = 30000, motionScale = 1 }) {
       // Bright nucleus
       if (r < radius * 0.18) {
         const boost =
-          2 -
+          1.25 -
           (r /
             (radius * 0.18)) *
             0.6;
@@ -132,17 +132,17 @@ export default function Galaxy({ count = 30000, motionScale = 1 }) {
 
     // Slow galaxy rotation
     points.current.rotation.y +=
-      delta * 0.0022;
+      delta * 0.0012 * motionScale;
 
     // Floating motion
     points.current.rotation.x =
-      Math.sin(t * 0.015) *
-      0.015 *
+      0.55 + Math.sin(t * 0.015) *
+      0.008 *
       motionScale;
 
     points.current.rotation.z =
-      Math.sin(t * 0.02) *
-      0.02 *
+      -0.4 + Math.sin(t * 0.02) *
+      0.008 *
       motionScale;
 
     points.current.position.y =
@@ -151,9 +151,9 @@ export default function Galaxy({ count = 30000, motionScale = 1 }) {
       motionScale;
 
     const scale =
-      2.65 +
+      0.7 +
       Math.sin(t * 0.18) *
-        0.03;
+        0.004 * motionScale;
 
     points.current.scale.setScalar(
       scale
@@ -163,9 +163,9 @@ export default function Galaxy({ count = 30000, motionScale = 1 }) {
   return (
     <points
       ref={points}
-      scale={5.2}
+      scale={0.7}
       rotation={[0.55, 0.15, -0.4]}
-      position={[0, -2, -18]}
+      position={[0, -4, -60]}
     >
       <bufferGeometry>
         <bufferAttribute
@@ -188,11 +188,11 @@ export default function Galaxy({ count = 30000, motionScale = 1 }) {
       </bufferGeometry>
 
       <pointsMaterial
-        size={0.016}
+        size={0.022}
         sizeAttenuation
         vertexColors
         transparent
-        opacity={0.96}
+        opacity={0.42}
         depthWrite={false}
         blending={
           THREE.AdditiveBlending

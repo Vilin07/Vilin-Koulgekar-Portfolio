@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { createSeededRandom } from "../../../utils/seededRandom";
 
 export default function HeroStars({
-  count = 160,
+  count = 96,
   motionScale = 1,
 }) {
   const group = useRef();
@@ -18,12 +18,12 @@ export default function HeroStars({
         (random() - 0.5) * 120,
         -20 - random() * 120,
       ],
-      scale: 0.18 + random() * 0.55,
+      scale: 0.12 + random() * 0.34,
       phase: random() * Math.PI * 2,
       color: new THREE.Color().setHSL(
         0.58 + random() * 0.05,
         0.45,
-        0.9 + random() * 0.08
+        0.72 + random() * 0.12
       ),
     }));
   }, [count]);
@@ -37,18 +37,18 @@ export default function HeroStars({
       const star = stars[i];
 
       mesh.material.opacity =
-        0.65 +
-        Math.sin(t * 0.3 + star.phase) *
-          0.18 *
+        0.34 +
+        Math.sin(t * 0.18 + star.phase) *
+          0.045 *
           motionScale;
 
       const pulse =
         star.scale *
         (1 +
           Math.sin(
-            t * 0.25 + star.phase
+            t * 0.16 + star.phase
           ) *
-            0.06 *
+            0.025 *
             motionScale);
 
       mesh.scale.setScalar(pulse);
@@ -67,7 +67,7 @@ export default function HeroStars({
           <meshBasicMaterial
             color={star.color}
             transparent
-            opacity={0.8}
+            opacity={0.34}
             blending={THREE.AdditiveBlending}
             depthWrite={false}
             toneMapped={false}
