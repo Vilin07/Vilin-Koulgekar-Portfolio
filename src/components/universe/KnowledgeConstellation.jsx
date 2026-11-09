@@ -44,6 +44,7 @@ export default function KnowledgeConstellation({ cluster, visibility, motionScal
         <KnowledgeStar
           key={star.id}
           star={star}
+          category={cluster.label}
           constellationVisibility={visibility}
           neighborResponse={neighborResponse}
           labelDistance={cluster.labelDistance}

@@ -30,5 +30,8 @@ export function getAutoplayJourneyProgress(elapsed, phase) {
 
 export function getActiveJourneyProgress(elapsed, phase, scrollProgress) {
   if (phase !== "journey") return 0;
-  return Math.max(scrollProgress, getAutoplayJourneyProgress(elapsed, phase));
+  // The cinematic opening can advance on its own; after the first intentional
+  // scroll, native scroll is the single source of truth for camera and content.
+  if (scrollProgress > 0.01) return scrollProgress;
+  return getAutoplayJourneyProgress(elapsed, phase);
 }
