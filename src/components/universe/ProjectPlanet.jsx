@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { getActiveJourneyProgress } from "../../utils/journeyProgress";
 import { createSeededRandom } from "../../utils/seededRandom";
 import KnowledgeParticle from "./KnowledgeParticle";
+import PlanetSurface from "./PlanetSurface";
 
 function smoothstep(start, end, value) {
   const t = THREE.MathUtils.clamp((value - start) / (end - start), 0, 1);
@@ -63,10 +64,7 @@ export default function ProjectPlanet({ chapter, phase, scrollProgress, motionSc
   return (
     <group position={chapter.position}>
       <group ref={planet}>
-        <mesh>
-          <sphereGeometry args={[chapter.radius, 36, 36]} />
-          <meshBasicMaterial ref={surfaceMaterial} color="#101b3d" transparent opacity={0} depthWrite={false} />
-        </mesh>
+        <PlanetSurface radius={chapter.radius} materialRef={surfaceMaterial} />
         <points rotation={[0.18, -0.32, 0]}>
           <bufferGeometry>
             <bufferAttribute attach="attributes-position" array={surfaceVariation} count={surfaceVariation.length / 3} itemSize={3} />
